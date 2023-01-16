@@ -1,0 +1,32 @@
+﻿<h4>Departments</h4>
+
+<form>
+    <label for="dname">Department name:</label><br>
+    <input type="text" id="dname" name="dname"><br>
+    <label for="dlocation">Department location:</label><br>
+    <input type="text" id="dlocation" name="dname"><br><br>
+    <button id="add" class="btn btn-dark" style="margin-top: -35px">Add new department</button>
+</form> 
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">departmentNo</th>
+      <th scope="col">departmentName</th>
+      <th scope="col">departmentLocation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Development</td>
+      <td>London</td>
+      <td><button class="btn btn-dark">Update</button></td>
+      <td><button class="btn btn-dark">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+@code {
+
+}

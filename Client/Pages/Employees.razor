@@ -1,0 +1,42 @@
+﻿<h4>Employees</h4>
+
+<form>
+    <label for="ename">Employee name: </label>
+    <input name="ename" id="ename" type="text">
+    <br>
+    <label for="salary">Salary: </label>
+    <input name="salary" id="salary" type="number">
+    <br>
+    <label for="departmentNo">Department number: </label>
+    <input name="departmentNo" id="departmentNo" type="number">
+    <br>
+    <label for="lastModifyDate">Last modify date: </label>
+    <input type="date" name="lastModifyDate" id="lastModifyDate">
+    <br>
+    <button id="add" class="btn btn-dark">Add new employee</button>
+</form>
+
+<table class="table" style="margin-top:10px">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">employeeNo</th>
+      <th scope="col">employeeName</th>
+      <th scope="col">Salary</th>
+      <th scope="col">departmentNo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Marky Mark</td>
+      <td>25000</td>
+      <td>4</td>
+      <td><button class="btn btn-dark">Update</button></td>
+      <td><button class="btn btn-dark">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+@code {
+
+}
