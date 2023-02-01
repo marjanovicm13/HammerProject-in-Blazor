@@ -1,13 +1,22 @@
-﻿<h4>Departments</h4>
+﻿@inject HttpClient HttpClient
+@using System.Text.Json
+@using System.Text.Json.Serialization
+
+<h4>Departments</h4>
 
 <form>
     <label for="dname">Department name:</label><br>
-    <input type="text" id="dname" name="dname"><br>
+    <input type="text" id="dname" name="dname" @bind="departmentName"><br>
     <label for="dlocation">Department location:</label><br>
-    <input type="text" id="dlocation" name="dname"><br><br>
-    <button id="add" class="btn btn-dark" style="margin-top: -35px">Add new department</button>
+    <input type="text" id="dlocation" name="dname" @bind="departmentLocation"><br><br>
+    <button @onclick="addDepartment" id="add" class="btn btn-dark" style="margin-top: -35px">Add new department</button>
 </form> 
 
+@if (_departments == null)
+{
+    <p><em>Loading...</em></p>
+}
+else{
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -17,16 +26,103 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Development</td>
-      <td>London</td>
-      <td><button class="btn btn-dark">Update</button></td>
-      <td><button class="btn btn-dark">Delete</button></td>
-    </tr>
+
+            @foreach (var department in _departments)
+            {
+                <tr>
+                    <th scope="row">@department.departmentNo</th>
+                    @if (department.updateClicked == false)
+                    {
+                        <td>@department.departmentName</td>
+                        <td>@department.departmentLocation</td>
+                        <td><button class="btn btn-dark" @onclick="(() => department.updateClicked = true)">Update</button></td>
+                        <td><button class="btn btn-dark" @onclick="@(() =>deleteDepartment(department.departmentNo))">Delete</button></td>
+                    }
+                    else
+                    {
+                        <td><input type="text" class="updateInput" placeholder="@department.departmentName" @bind="@department.departmentName"></td>
+                        <td><input type="text" class="updateInput" placeholder="@department.departmentLocation" @bind="@department.departmentLocation"></td>
+                        <td><button class="btn btn-dark" @onclick="(()=> updateDepartment(department))">Submit</button></td>
+                        <td><button class="btn btn-dark" @onclick="(() => department.updateClicked = false)">Cancel</button></td>
+                    }
+
+                </tr>
+            }
+
   </tbody>
 </table>
+}
 
 @code {
+    private List<department> departments = new List<department>();
+    private List<DepartmentUpdate> _departments = new List<DepartmentUpdate>();
 
+    private string? departmentName { get; set; }
+    private string? departmentLocation { get; set; }
+
+    private Boolean updateClicked = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await getDepartments();
+    }
+
+    private async Task<List<DepartmentUpdate>> getDepartments()
+    {
+        departments = await HttpClient.GetFromJsonAsync<List<department>>("Department/getDepartments");
+        foreach (var dep in departments)
+        {
+            DepartmentUpdate _dep = new DepartmentUpdate()
+                {
+                    departmentNo = dep.departmentNo,
+                    departmentName = dep.departmentName,
+                    departmentLocation = dep.departmentLocation,
+                    updateClicked = false
+                };
+            _departments.Add(_dep);
+        }
+        return _departments;
+    }
+
+    private async void addDepartment()
+    {
+        department _department = new department()
+        {
+            departmentName = departmentName,
+            departmentLocation = departmentLocation
+        };
+        Console.WriteLine(_department);
+
+        var departmentToPost = JsonSerializer.Serialize(_department);
+        var requestContent = new StringContent(departmentToPost, System.Text.Encoding.UTF8, "application/json");
+
+        var response = await HttpClient.PostAsync("Department", requestContent);
+        response.EnsureSuccessStatusCode();
+    }
+
+    private async void deleteDepartment(int departmentNo)
+    {
+        _departments.RemoveAll(x => x.departmentNo == departmentNo);
+        var response = await HttpClient.DeleteAsync("Department/" + departmentNo);
+        response.EnsureSuccessStatusCode();
+    }
+
+    private async void updateDepartment(DepartmentUpdate departmentToUpdate)
+    {
+        foreach(var dep in _departments)
+        {
+            if(dep.departmentNo == departmentToUpdate.departmentNo)
+            {
+                dep.departmentLocation = departmentToUpdate.departmentLocation;
+                dep.departmentName = departmentToUpdate.departmentName;
+                dep.updateClicked = false;
+            }
+        }
+        var departmentToPost = JsonSerializer.Serialize(departmentToUpdate);
+        var requestContent = new StringContent(departmentToPost, System.Text.Encoding.UTF8, "application/json");
+        var response = await HttpClient.PutAsync("Department", requestContent);
+        response.EnsureSuccessStatusCode();
+    }
+    
 }
+  

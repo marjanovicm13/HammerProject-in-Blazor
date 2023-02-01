@@ -9,9 +9,11 @@
     "assembly": {
       "Microsoft.AspNetCore.Authorization.dll": "sha256-z4GZC8zBP0+3qTsoIBdCEOvwWaWDTpt8U1vr1aLEkI4=",
       "Microsoft.AspNetCore.Components.dll": "sha256-2+8AH28qnJdxAcSZ0HYdiGuZzHwXNI1gFtZz71zMhDc=",
+      "Microsoft.AspNetCore.Components.Authorization.dll": "sha256-s8GRS+pSGrHjRTvM2gxPqnJCH0gWau+eVkUxlNkRUmk=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-9hS0lH\/KHwdR5UrpgTsTuXn3Q25Lo5YfMdkNS9eU2gk=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-UZqIo7mXzs725Ue0bwmQCHGFmUbf9ISmmgJcPmK4G5c=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-O+b5Wry0nfi1jJsRcx5gMTmufddRxDTcFS+QUtACR9k=",
+      "Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll": "sha256-WB23H68Lpf5OSgBfdaQB96afHbn8qws0S8ZrgX1ZofU=",
       "Microsoft.AspNetCore.Metadata.dll": "sha256-yKXiy5bHeZc3n7OK1T+dXnCaUgdD\/oucHL4X86LFzww=",
       "Microsoft.Extensions.Configuration.dll": "sha256-PqQvp77oZ4+uuy2ElXk8AU9I6RfZSf18UGTrd4rulOo=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-CnS3b9EMFQmETBUVEgtcron4DBsfFdcVt3zfCP6Uflg=",
@@ -198,15 +200,15 @@
       "mscorlib.dll": "sha256-T52Qf1cS\/UysEoWOoE2ptEJEXfGpanQX5KNLyDiLv1E=",
       "netstandard.dll": "sha256-p32h5P3QmHJ\/FGoeE6m7f5g\/8ng2PSPGZktHyMadvIs=",
       "System.Private.CoreLib.dll": "sha256-6MwQcyKbqBsoZYOcD9fQJ4iKcn1qMmWRWVEkU2LLCb0=",
-      "HammerProject.Shared.dll": "sha256-KsXkx+wmf0rhQoLq0GFzybobZVv\/L\/IHTTW0xG6Obno=",
-      "HammerProject.Client.dll": "sha256-F6VkEf+YccLqeGzfwkovn26\/toQUlLIdNyQeuKhvbI4="
+      "HammerProject.Shared.dll": "sha256-BF4sYK4Sra47ElOIvXPzs5TThDnUh4O1PjpJ2KiodaE=",
+      "HammerProject.Client.dll": "sha256-oWQoyh3obSM8YXZsv\/j9fT0+YQSyj9CiAeMwIKI0eT4="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "HammerProject.Shared.pdb": "sha256-\/MzbPHGyDrZWFnb6NBpdgTGxsbUBKOoXpoogV301Vgo=",
-      "HammerProject.Client.pdb": "sha256-p3EVCNIkdRBwz0ekdcnzj3dmo2Sbg0QcjKuh3wfV4Kw="
+      "HammerProject.Shared.pdb": "sha256-LSoJ5muWc2i\/F06bVKQyCgGQvpGDr\/b2LNY1XLdjkLU=",
+      "HammerProject.Client.pdb": "sha256-A7hNPoNASz1zYTqeOIFUtxKmJSprjs2HEJ5XQo1LH1I="
     },
     "runtime": {
       "dotnet.7.0.2.8wsiz97xrn.js": "sha256-4mh03qTse0uNR+dQ6ydExm4jJXph0RE8zGNCtF0jiNA=",

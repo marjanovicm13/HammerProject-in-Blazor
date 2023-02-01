@@ -1,42 +1,137 @@
-﻿<h4>Employees</h4>
+﻿@inject HttpClient HttpClient
+@using System.Text.Json
+@using System.Text.Json.Serialization
+
+<h4>Employees</h4>
 
 <form>
     <label for="ename">Employee name: </label>
-    <input name="ename" id="ename" type="text">
+    <input name="ename" id="ename" type="text" @bind="employeeName">
     <br>
     <label for="salary">Salary: </label>
-    <input name="salary" id="salary" type="number">
+    <input name="salary" id="salary" type="number" @bind="salary">
     <br>
     <label for="departmentNo">Department number: </label>
-    <input name="departmentNo" id="departmentNo" type="number">
+    <input name="departmentNo" id="departmentNo" type="number" @bind="departmentNo">
     <br>
     <label for="lastModifyDate">Last modify date: </label>
     <input type="date" name="lastModifyDate" id="lastModifyDate">
     <br>
-    <button id="add" class="btn btn-dark">Add new employee</button>
+    <button @onclick="addEmployee" id="add" class="btn btn-dark">Add new employee</button>
 </form>
 
-<table class="table" style="margin-top:10px">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">employeeNo</th>
-      <th scope="col">employeeName</th>
-      <th scope="col">Salary</th>
-      <th scope="col">departmentNo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Marky Mark</td>
-      <td>25000</td>
-      <td>4</td>
-      <td><button class="btn btn-dark">Update</button></td>
-      <td><button class="btn btn-dark">Delete</button></td>
-    </tr>
-  </tbody>
-</table>
+@if (_employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else{
+    <table class="table" style="margin-top:10px">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">employeeNo</th>
+          <th scope="col">employeeName</th>
+          <th scope="col">Salary</th>
+          <th scope="col">departmentNo</th>
+        </tr>
+      </thead>
+      <tbody>
+            @foreach (var employee in _employees)
+            {
+                <tr>
+                    <th scope="row">@employee.employeeNo</th>
+                    @if (employee.updateClicked == false)
+                    {
+                        <td>@employee.employeeName</td>
+                        <td>@employee.salary</td>
+                        <td>@employee.departmentNo</td>
+                        <td><button class="btn btn-dark" @onclick="(() => employee.updateClicked = true)">Update</button></td>
+                        <td><button class="btn btn-dark" @onclick="(() => deleteEmployee(employee.employeeNo))">Delete</button></td>
+                    }
+                    else
+                    {
+                        <td><input type="text" class="updateInput" placeholder="@employee.employeeName" @bind="@employee.employeeName"></td>
+                        <td><input type="text" class="updateInput" placeholder="@employee.salary" @bind="@employee.salary"></td>
+                        <td><input type="text" class="updateInput" placeholder="@employee.departmentNo" @bind="@employee.departmentNo"></td>
+                        <td><button class="btn btn-dark" @onclick="(()=> updateEmployee(employee))">Submit</button></td>
+                        <td><button class="btn btn-dark" @onclick="(() => employee.updateClicked = false)">Cancel</button></td>
+                    }
+                </tr>
+            }
+      </tbody>
+    </table>
+}
 
 @code {
+    private List<employee>? employees = new List<employee>();
+    private List<EmployeeUpdate> _employees = new List<EmployeeUpdate>();
 
+    private string? employeeName { get; set; }
+    private int salary { get; set; }
+    private int departmentNo { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await getEmployees();
+    }
+
+    private async Task<List<EmployeeUpdate>> getEmployees()
+    {
+        employees = await HttpClient.GetFromJsonAsync<List<employee>>("Employee/getEmployees");
+        foreach (var emp in employees)
+        {
+            EmployeeUpdate _emp = new EmployeeUpdate()
+                {
+                    employeeNo = emp.employeeNo,
+                    employeeName = emp.employeeName,
+                    salary = emp.salary,
+                    departmentNo = emp.departmentNo,
+                    updateClicked = false
+                };
+            _employees.Add(_emp);
+        }
+        return _employees;
+    }
+
+    private async void addEmployee()
+    {
+        employee _employee = new employee()
+            {
+                employeeName = employeeName,
+                salary = salary,
+                departmentNo = departmentNo,
+                lastModifyDate = null
+            };
+        Console.WriteLine(_employee);
+
+        var employeeToPost = JsonSerializer.Serialize(_employee);
+        var requestContent = new StringContent(employeeToPost, System.Text.Encoding.UTF8, "application/json");
+
+        var response = await HttpClient.PostAsync("Employee", requestContent);
+        response.EnsureSuccessStatusCode();
+    }
+
+    private async void deleteEmployee(int employeeNo)
+    {
+        _employees.RemoveAll(x => x.employeeNo == employeeNo);
+        var response = await HttpClient.DeleteAsync("Employee/" + employeeNo);
+        response.EnsureSuccessStatusCode();
+    }
+
+    private async void updateEmployee(EmployeeUpdate employeeToUpdate)
+    {
+        foreach (var emp in _employees)
+        {
+            if (emp.employeeNo == employeeToUpdate.employeeNo)
+            {
+                emp.employeeName = employeeToUpdate.employeeName;
+                emp.salary = employeeToUpdate.salary;
+                emp.departmentNo = employeeToUpdate.departmentNo;
+                emp.updateClicked = false;
+            }
+        }
+        var employeeToPost = JsonSerializer.Serialize(employeeToUpdate);
+        var requestContent = new StringContent(employeeToPost, System.Text.Encoding.UTF8, "application/json");
+        var response = await HttpClient.PutAsync("Employee", requestContent);
+        response.EnsureSuccessStatusCode();
+    }
 }

@@ -137,6 +137,35 @@ div.form{
     text-align: left;
 }
 
+/* Update input */
+input.updateInput {
+    width: 100%;
+    background-color: greenyellow;
+}
+
+/*Identity server*/
+.username {
+    display: block;
+    font-weight: 700;
+    line-height: 0.7rem;
+    margin-top: 0.5rem;
+    color: white;
+    font-size: 1rem;
+}
+
+a.sign-in {
+    background: none;
+    border: 1.5px solid white;
+    border-radius: 0.7em;
+    color: white;
+    text-transform: uppercase;
+    padding: 0.2rem 0.8rem 0.1rem 0.8rem;
+    font-weight: 100;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    margin-left: 3px;
+}
+
 
   
 

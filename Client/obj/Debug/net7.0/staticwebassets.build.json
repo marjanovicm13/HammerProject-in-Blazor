@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "X+PKG+T7SGgli2H4BEHZJNdAsD0/muqwaWHbik6zf1E=",
+  "Hash": "VIAP46TFWVdTXL5nOHdpFbykI4FaJfk2DPg0SP4cq6M=",
   "Source": "HammerProject.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.2\\staticwebassets\\AuthenticationService.js",
+      "SourceId": "Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.2\\staticwebassets\\",
+      "BasePath": "_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "RelativePath": "AuthenticationService.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.2\\staticwebassets\\AuthenticationService.js"
+    },
     {
       "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.boot.json",
       "SourceId": "HammerProject.Client",
@@ -255,6 +272,23 @@
       "OriginalItemSpec": "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Authorization.dll"
     },
     {
+      "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "SourceId": "HammerProject.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Components.Authorization.dll"
+    },
+    {
       "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
       "SourceId": "HammerProject.Client",
       "SourceType": "Computed",
@@ -304,6 +338,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.components.web\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Components.Web.dll"
+    },
+    {
+      "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "SourceId": "HammerProject.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
     },
     {
       "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.dll",
@@ -4029,6 +4080,23 @@
       "OriginalItemSpec": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Xml.dll"
     },
     {
+      "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\obj\\Debug\\net7.0\\build-gz\\6UYS2Xr6.gz",
+      "SourceId": "HammerProject.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll"
+    },
+    {
       "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\obj\\Debug\\net7.0\\build-gz\\7MO84A8m.gz",
       "SourceId": "HammerProject.Client",
       "SourceType": "Computed",
@@ -4792,6 +4860,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\dotnet.7.0.2.8wsiz97xrn.js"
+    },
+    {
+      "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\obj\\Debug\\net7.0\\build-gz\\HFxCDdNl.gz",
+      "SourceId": "HammerProject.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
     },
     {
       "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\obj\\Debug\\net7.0\\build-gz\\hgH5vHLI.gz",

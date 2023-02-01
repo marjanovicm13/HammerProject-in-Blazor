@@ -1,18 +1,20 @@
 ﻿@page "/"
 @page "/home"
+@inject HttpClient HttpClient
 
 <PageTitle>Home</PageTitle>
 
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col" style="overflow:hidden">
            <Departments></Departments>
         </div>
-        <div class="col">
+        <div class="col" style="overflow:hidden">
             <Employees></Employees>
         </div>
     </div>
 </div>
+
 
 @code{
 
