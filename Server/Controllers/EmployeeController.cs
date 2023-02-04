@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -24,6 +25,7 @@ namespace HammerProject.Server.Controllers
             return employees;
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody] employee emp)
         {
@@ -44,6 +46,7 @@ namespace HammerProject.Server.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         public IActionResult Put([FromBody] EmployeeUpdate emp)
         {
@@ -66,6 +69,7 @@ namespace HammerProject.Server.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

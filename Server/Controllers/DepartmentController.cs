@@ -1,4 +1,5 @@
 ﻿using HammerProject.Client.Pages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +29,7 @@ namespace HammerProject.Server.Controllers
             return departments;
         }
 
-
+        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody] department dep)
         {
@@ -49,6 +50,7 @@ namespace HammerProject.Server.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         public IActionResult Put([FromBody] DepartmentUpdate dep)
         {
@@ -70,6 +72,7 @@ namespace HammerProject.Server.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
