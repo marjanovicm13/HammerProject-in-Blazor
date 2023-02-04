@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BAJLelxoBUKpERav4Hj2xwbx2sjOGz6cNTo7pzDUjBzLrWuTm0JHNUEY6GgSsVFy5PgfRxcRk641oQgB7ZwAyA==",
+  "dgSpecHash": "foV83q8gYc6JAK+YX0lchov/yEcXvKfh7qUlXJpI1z4RYEU6HfxhfT0vIAM0XEBhfqWF7C1S3aOPncXwg5qE4Q==",
   "success": true,
-  "projectFilePath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Shared\\HammerProject.Shared.csproj",
+  "projectFilePath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Shared\\HammerProject.Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -9,57 +9,65 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = HammerProject.Client
 build_property.RootNamespace = HammerProject.Client
-build_property.ProjectDir = D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProject\Client\
+build_property.ProjectDir = D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Client\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProject\Client
+build_property.MSBuildProjectDirectory = D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Client
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/App.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Pages/Authentication.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Pages/Authentication.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Pages/Counter.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Pages/Departments.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Pages/Departments.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Pages/Employees.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Pages/Employees.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Pages/Index.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Pages/Login.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Shared/LoginDisplay.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Pages/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Pages/Registration.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cmF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Shared/LoginDisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Shared/MainLayout.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Shared/NavMenu.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/Shared/SurveyPrompt.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProject/Client/_Imports.razor]
+[D:/Fakultet/Fakultet/Projekti/Blazor/Hammer/HammerProjectV2/HammerProject-in-Blazor/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

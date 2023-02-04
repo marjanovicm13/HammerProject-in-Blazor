@@ -4,21 +4,29 @@
 
 <h4>Employees</h4>
 
-<form>
-    <label for="ename">Employee name: </label>
-    <input name="ename" id="ename" type="text" @bind="employeeName">
-    <br>
-    <label for="salary">Salary: </label>
-    <input name="salary" id="salary" type="number" @bind="salary">
-    <br>
-    <label for="departmentNo">Department number: </label>
-    <input name="departmentNo" id="departmentNo" type="number" @bind="departmentNo">
-    <br>
-    <label for="lastModifyDate">Last modify date: </label>
-    <input type="date" name="lastModifyDate" id="lastModifyDate">
-    <br>
-    <button @onclick="addEmployee" id="add" class="btn btn-dark">Add new employee</button>
-</form>
+<AuthorizeView>
+    <Authorized>
+        The user is authorized
+        <form>
+            <label for="ename">Employee name: </label>
+            <input name="ename" id="ename" type="text" @bind="employeeName">
+            <br>
+            <label for="salary">Salary: </label>
+            <input name="salary" id="salary" type="number" @bind="salary">
+            <br>
+            <label for="departmentNo">Department number: </label>
+            <input name="departmentNo" id="departmentNo" type="number" @bind="departmentNo">
+            <br>
+            <label for="lastModifyDate">Last modify date: </label>
+            <input type="date" name="lastModifyDate" id="lastModifyDate">
+            <br>
+            <button @onclick="addEmployee" id="add" class="btn btn-dark">Add new employee</button>
+        </form>
+    </Authorized>
+    <NotAuthorized>
+        The User is not authorized to add new employees or to update/delete current ones.
+    </NotAuthorized>
+</AuthorizeView>
 
 @if (_employees == null)
 {
@@ -44,8 +52,14 @@ else{
                         <td>@employee.employeeName</td>
                         <td>@employee.salary</td>
                         <td>@employee.departmentNo</td>
-                        <td><button class="btn btn-dark" @onclick="(() => employee.updateClicked = true)">Update</button></td>
-                        <td><button class="btn btn-dark" @onclick="(() => deleteEmployee(employee.employeeNo))">Delete</button></td>
+                        <AuthorizeView>
+                            <Authorized>
+                                <td><button class="btn btn-dark" @onclick="(() => employee.updateClicked = true)">Update</button></td>
+                                <td><button class="btn btn-dark" @onclick="(() => deleteEmployee(employee.employeeNo))">Delete</button></td>
+                            </Authorized>
+                            <NotAuthorized>
+                            </NotAuthorized>
+                        </AuthorizeView>
                     }
                     else
                     {

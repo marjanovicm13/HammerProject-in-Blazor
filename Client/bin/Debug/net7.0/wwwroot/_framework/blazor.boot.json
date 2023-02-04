@@ -7,6 +7,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
+      "Blazored.LocalStorage.dll": "sha256-eXVgTw72kEn74FZgDQbLtvAmXbiZDSj5gzUnxVmwowQ=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-z4GZC8zBP0+3qTsoIBdCEOvwWaWDTpt8U1vr1aLEkI4=",
       "Microsoft.AspNetCore.Components.dll": "sha256-2+8AH28qnJdxAcSZ0HYdiGuZzHwXNI1gFtZz71zMhDc=",
       "Microsoft.AspNetCore.Components.Authorization.dll": "sha256-s8GRS+pSGrHjRTvM2gxPqnJCH0gWau+eVkUxlNkRUmk=",
@@ -200,15 +201,15 @@
       "mscorlib.dll": "sha256-T52Qf1cS\/UysEoWOoE2ptEJEXfGpanQX5KNLyDiLv1E=",
       "netstandard.dll": "sha256-p32h5P3QmHJ\/FGoeE6m7f5g\/8ng2PSPGZktHyMadvIs=",
       "System.Private.CoreLib.dll": "sha256-6MwQcyKbqBsoZYOcD9fQJ4iKcn1qMmWRWVEkU2LLCb0=",
-      "HammerProject.Shared.dll": "sha256-BF4sYK4Sra47ElOIvXPzs5TThDnUh4O1PjpJ2KiodaE=",
-      "HammerProject.Client.dll": "sha256-oWQoyh3obSM8YXZsv\/j9fT0+YQSyj9CiAeMwIKI0eT4="
+      "HammerProject.Shared.dll": "sha256-BR5fOGB0MV8dGdv219xs37FwlDrrgXIe5Rsrb4a4+4w=",
+      "HammerProject.Client.dll": "sha256-T\/FaTJyLgsBjSHnqA2JvtmXIfHA+LVTi0pJ32Rw+GHI="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "HammerProject.Shared.pdb": "sha256-LSoJ5muWc2i\/F06bVKQyCgGQvpGDr\/b2LNY1XLdjkLU=",
-      "HammerProject.Client.pdb": "sha256-A7hNPoNASz1zYTqeOIFUtxKmJSprjs2HEJ5XQo1LH1I="
+      "HammerProject.Shared.pdb": "sha256-XuXafoUCFfU1AZayh1La83rJQL4i+fFWhzjTPy+FoaA=",
+      "HammerProject.Client.pdb": "sha256-gXflWRjHJDIgaLpFPsirGVcfUI5yNAPyVUhSK7hFyBk="
     },
     "runtime": {
       "dotnet.7.0.2.8wsiz97xrn.js": "sha256-4mh03qTse0uNR+dQ6ydExm4jJXph0RE8zGNCtF0jiNA=",

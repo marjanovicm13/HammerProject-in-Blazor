@@ -1,71 +1,71 @@
 {
   "Files": [
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\obj\\Debug\\net7.0\\build-gz\\mS+LmAvO.gz",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\obj\\Debug\\net7.0\\build-gz\\mS+LmAvO.gz",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\app.css",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "PackagePath": "staticwebassets\\css\\open-iconic"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "PackagePath": "staticwebassets\\css\\open-iconic"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\open-iconic\\README.md",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\open-iconic\\README.md",
       "PackagePath": "staticwebassets\\css\\open-iconic\\README.md"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\favicon.png",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\icon-192.png",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\wwwroot\\index.html",
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {

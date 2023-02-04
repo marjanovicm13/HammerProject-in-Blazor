@@ -3,7 +3,37 @@
 
 <PageTitle>Login</PageTitle>
 
-<div class="form">
+<h3>Login</h3>
+@if (ShowAuthError)
+{
+    <div class="alert alert-danger" role="alert">
+        <p>@Error</p>
+    </div>
+}
+<EditForm Model="_userForAuthentication" OnValidSubmit="ExecuteLogin" class="card card-body bg-light mt-5">
+    <DataAnnotationsValidator />
+    <div class="form-group row">
+        <label for="username" class="col-md-2 col-form-label">Username:</label>
+        <div class="col-md-10">
+            <InputText id="username" class="form-control" @bind-Value="_userForAuthentication.UserName" />
+            <ValidationMessage For="@(() => _userForAuthentication.UserName)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="password" class="col-md-2 col-form-label">Password:</label>
+        <div class="col-md-10">
+            <InputText type="password" id="password" class="form-control" @bind-Value="_userForAuthentication.Password" />
+            <ValidationMessage For="@(() => _userForAuthentication.Password)" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">Login</button>
+        </div>
+    </div>
+</EditForm>
+
+@*<div class="form">
     <form class="loginForm">
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" style="width: 120%">
@@ -18,7 +48,7 @@
         <button class="btn btn-primary btn-block" style="margin-left: -55px">Sign in with Facebook</button>
      </div>
 
-</div>
+</div>*@
 
 
 @code {

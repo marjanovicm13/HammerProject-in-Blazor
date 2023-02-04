@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fy0mK8P1xyGCYnRuqloMm5eNUwrsrb6w3pzAnFRT9LsTrnZW1LdrDbkGOhILu9HRWeScuxI/qc2MpMW1laUQ7A==",
+  "dgSpecHash": "Kgi4RNTNmFjk6fKn5rbHFEbeFmm9UjiAtTKi1E1a68tXNB3qSKSJZsTtAJd+IV8o8gMrISVz75ZJ6y6jrROlrg==",
   "success": true,
-  "projectFilePath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\HammerProject.Client.csproj",
+  "projectFilePath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\HammerProject.Client.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Mihael\\.nuget\\packages\\blazored.localstorage\\4.3.0\\blazored.localstorage.4.3.0.nupkg.sha512",
     "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.2\\microsoft.aspnetcore.authorization.7.0.2.nupkg.sha512",
     "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.components\\7.0.2\\microsoft.aspnetcore.components.7.0.2.nupkg.sha512",
     "C:\\Users\\Mihael\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\7.0.2\\microsoft.aspnetcore.components.analyzers.7.0.2.nupkg.sha512",

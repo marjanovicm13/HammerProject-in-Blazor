@@ -10,3 +10,15 @@ D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProject\Shared\obj\Debug\net7.
 D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProject\Shared\obj\Debug\net7.0\refint\HammerProject.Shared.dll
 D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProject\Shared\obj\Debug\net7.0\HammerProject.Shared.pdb
 D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProject\Shared\obj\Debug\net7.0\ref\HammerProject.Shared.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\bin\Debug\net7.0\HammerProject.Shared.deps.json
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\bin\Debug\net7.0\HammerProject.Shared.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\bin\Debug\net7.0\HammerProject.Shared.pdb
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\obj\Debug\net7.0\HammerProject.Shared.csproj.AssemblyReference.cache
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\obj\Debug\net7.0\HammerProject.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\obj\Debug\net7.0\HammerProject.Shared.AssemblyInfoInputs.cache
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\obj\Debug\net7.0\HammerProject.Shared.AssemblyInfo.cs
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\obj\Debug\net7.0\HammerProject.Shared.csproj.CoreCompileInputs.cache
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\obj\Debug\net7.0\HammerProject.Shared.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\obj\Debug\net7.0\refint\HammerProject.Shared.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\obj\Debug\net7.0\HammerProject.Shared.pdb
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Shared\obj\Debug\net7.0\ref\HammerProject.Shared.dll

@@ -1,16 +1,25 @@
 ﻿@inject HttpClient HttpClient
 @using System.Text.Json
 @using System.Text.Json.Serialization
+@using System.Security.Claims
 
 <h4>Departments</h4>
 
-<form>
-    <label for="dname">Department name:</label><br>
-    <input type="text" id="dname" name="dname" @bind="departmentName"><br>
-    <label for="dlocation">Department location:</label><br>
-    <input type="text" id="dlocation" name="dname" @bind="departmentLocation"><br><br>
-    <button @onclick="addDepartment" id="add" class="btn btn-dark" style="margin-top: -35px">Add new department</button>
-</form> 
+<AuthorizeView>
+    <Authorized>
+        The user @context.User.FindFirst(ClaimTypes.Name).Value is authorized
+        <form>
+            <label for="dname">Department name:</label><br>
+            <input type="text" id="dname" name="dname" @bind="departmentName"><br>
+            <label for="dlocation">Department location:</label><br>
+            <input type="text" id="dlocation" name="dname" @bind="departmentLocation"><br><br>
+            <button @onclick="addDepartment" id="add" class="btn btn-dark" style="margin-top: -35px">Add new department</button>
+        </form>
+    </Authorized>
+    <NotAuthorized>
+        The User is not authorized to add new departments or to update/delete current ones.
+    </NotAuthorized>
+</AuthorizeView>
 
 @if (_departments == null)
 {
@@ -35,8 +44,14 @@ else{
                     {
                         <td>@department.departmentName</td>
                         <td>@department.departmentLocation</td>
-                        <td><button class="btn btn-dark" @onclick="(() => department.updateClicked = true)">Update</button></td>
-                        <td><button class="btn btn-dark" @onclick="@(() =>deleteDepartment(department.departmentNo))">Delete</button></td>
+                        <AuthorizeView>
+                            <Authorized>
+                                <td><button class="btn btn-dark" @onclick="(() => department.updateClicked = true)">Update</button></td>
+                                <td><button class="btn btn-dark" @onclick="@(() =>deleteDepartment(department.departmentNo))">Delete</button></td>
+                            </Authorized>
+                            <NotAuthorized>
+                            </NotAuthorized>
+                        </AuthorizeView>
                     }
                     else
                     {
@@ -45,7 +60,6 @@ else{
                         <td><button class="btn btn-dark" @onclick="(()=> updateDepartment(department))">Submit</button></td>
                         <td><button class="btn btn-dark" @onclick="(() => department.updateClicked = false)">Cancel</button></td>
                     }
-
                 </tr>
             }
 

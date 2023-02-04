@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "Blazored.LocalStorage/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/Blazored.LocalStorage.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Blazored.LocalStorage.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/7.0.2": {
         "type": "package",
         "dependencies": {
@@ -528,6 +540,18 @@
       }
     },
     "net7.0/browser-wasm": {
+      "Blazored.LocalStorage/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/Blazored.LocalStorage.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Blazored.LocalStorage.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/7.0.2": {
         "type": "package",
         "dependencies": {
@@ -1049,6 +1073,20 @@
     }
   },
   "libraries": {
+    "Blazored.LocalStorage/4.3.0": {
+      "sha512": "CfHp9SWN45cM/TM8uw4pELQBfCRtMssCMSOjsEXVWibeYBn36TLpzw+J1vsC2Su2BEQ3Et19A5+GqK1S3kHbTQ==",
+      "type": "package",
+      "path": "blazored.localstorage/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.localstorage.4.3.0.nupkg.sha512",
+        "blazored.localstorage.nuspec",
+        "icon.png",
+        "lib/net6.0/Blazored.LocalStorage.dll",
+        "lib/net7.0/Blazored.LocalStorage.dll"
+      ]
+    },
     "Microsoft.AspNetCore.Authorization/7.0.2": {
       "sha512": "ukMX3a48GkpxeWHHeNby5kUQgsiedPVUMX1nBgswBciWczzM2G1WpRuqu2HTEaFFkMIPPhkA0pRL30d5upTTIw==",
       "type": "package",
@@ -1936,6 +1974,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Blazored.LocalStorage >= 4.3.0",
       "HammerProject.Shared >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly >= 7.0.2",
       "Microsoft.AspNetCore.Components.WebAssembly.Authentication >= 7.0.2",
@@ -1948,11 +1987,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\HammerProject.Client.csproj",
+      "projectUniqueName": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\HammerProject.Client.csproj",
       "projectName": "HammerProject.Client",
-      "projectPath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\HammerProject.Client.csproj",
+      "projectPath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\HammerProject.Client.csproj",
       "packagesPath": "C:\\Users\\Mihael\\.nuget\\packages\\",
-      "outputPath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Client\\obj\\",
+      "outputPath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mihael\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1969,8 +2008,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Shared\\HammerProject.Shared.csproj": {
-              "projectPath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProject\\Shared\\HammerProject.Shared.csproj"
+            "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Shared\\HammerProject.Shared.csproj": {
+              "projectPath": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Shared\\HammerProject.Shared.csproj"
             }
           }
         }
@@ -1985,6 +2024,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "Blazored.LocalStorage": {
+            "target": "Package",
+            "version": "[4.3.0, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[7.0.2, )"
