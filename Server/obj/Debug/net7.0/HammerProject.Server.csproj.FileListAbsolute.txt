@@ -205,3 +205,7 @@ D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Bla
 D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Blazored.LocalStorage.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Toolbelt.Blazor.HttpClientInterceptor.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

@@ -1,5 +1,10 @@
-﻿@page "/authentication/login"
-@page "/login"
+﻿@page "/login"
+@inject IJSRuntime jsRunn
+@inject HttpClient httpClient
+@inject AuthenticationStateProvider authStateProvider
+@inject IAuthenticationService _authService
+@using System.Text.Json
+@using Newtonsoft.Json.Linq
 
 <PageTitle>Login</PageTitle>
 
@@ -33,24 +38,55 @@
     </div>
 </EditForm>
 
-@*<div class="form">
-    <form class="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" style="width: 120%">
-            <br>
-            <label for="password">Password:</label>
-        <input type="password" name="password" id="password" style="width: 120%">
-            <br>
-            <button class="btn btn-dark" style="margin-bottom: 10px">Login</button>
-     </form>
-
-    <div class="fbButton">
-        <button class="btn btn-primary btn-block" style="margin-left: -55px">Sign in with Facebook</button>
-     </div>
-
-</div>*@
+<div class="row">
+    <div class="col-md-12 text-right">
+        <button @onclick="LoginWithFacebook" type="submit" class="btn btn-primary" style="margin-top: 5px; margin-left: 16px">Login with facebook</button>
+    </div>
+</div>
 
 
 @code {
+    private static string tokenFace = "";
 
+    public async Task LoginWithFacebook()
+    {
+        await jsRunn.InvokeAsync<object>("fbLogin");
+        await Task.Delay(10000);
+        Console.WriteLine("response "+ tokenFace);
+        getuser();
+    }
+
+
+    [JSInvokable("FbLoginProcessCallback")]
+    public static async void FbLoginProcessCallback(object result)
+    {
+        JObject obj = JObject.Parse(result.ToString());
+        tokenFace = obj["authResponse"]["accessToken"].ToString();
+    }
+
+    private async void getuser()
+    {
+        Console.WriteLine(tokenFace);
+        if (tokenFace != null && tokenFace != "")
+        {
+            var userInfo = await httpClient.GetFromJsonAsync<FacebookUserInfo>($"https://graph.facebook.com/v12.0/me?access_token={tokenFace}&fields=name,email");
+            Console.WriteLine(userInfo.Email);
+            var result = await _authService.LoginFacebook(new FacebookUserInfo{Email = userInfo.Email});
+            if (!result.IsAuthSuccessful)
+            {
+                Error = result.ErrorMessage;
+                ShowAuthError = true;
+            }
+            else
+            {
+                NavigationManager.NavigateTo("/");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Token is null");
+        }
+    }
+
+ 
 }

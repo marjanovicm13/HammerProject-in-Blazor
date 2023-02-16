@@ -1,4 +1,7 @@
 ﻿@inject HttpClient HttpClient
+@inject RefreshTokenService RefreshTokenService
+@inject EmployeeStateContainerService employeeStateContainerService
+@inject NavigationManager navigationManager
 @using System.Text.Json
 @using System.Text.Json.Serialization
 @using System.Security.Claims
@@ -7,14 +10,11 @@
 
 <AuthorizeView>
     <Authorized>
-        The user @context.User.FindFirst(ClaimTypes.Name).Value is authorized
-        <form>
             <label for="dname">Department name:</label><br>
             <input type="text" id="dname" name="dname" @bind="departmentName"><br>
             <label for="dlocation">Department location:</label><br>
             <input type="text" id="dlocation" name="dname" @bind="departmentLocation"><br><br>
             <button @onclick="addDepartment" id="add" class="btn btn-dark" style="margin-top: -35px">Add new department</button>
-        </form>
     </Authorized>
     <NotAuthorized>
         The User is not authorized to add new departments or to update/delete current ones.
@@ -67,9 +67,16 @@ else{
 </table>
 }
 
+@if(cannotDeleteDepartment == true)
+{
+    <p>Cannot delete this department because employees are in it.</p>
+}
+
 @code {
     private List<department> departments = new List<department>();
     private List<DepartmentUpdate> _departments = new List<DepartmentUpdate>();
+    private List<employee>? employees = new List<employee>();
+    private Boolean cannotDeleteDepartment = false;
 
     private string? departmentName { get; set; }
     private string? departmentLocation { get; set; }
@@ -78,6 +85,7 @@ else{
 
     protected override async Task OnInitializedAsync()
     {
+        base.OnInitialized();   
         await getDepartments();
     }
 
@@ -109,14 +117,27 @@ else{
 
         var departmentToPost = JsonSerializer.Serialize(_department);
         var requestContent = new StringContent(departmentToPost, System.Text.Encoding.UTF8, "application/json");
-
+        await RefreshTokenService.TryRefreshToken();
         var response = await HttpClient.PostAsync("Department", requestContent);
         response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("/", true);
     }
 
     private async void deleteDepartment(int departmentNo)
     {
+        employees = employeeStateContainerService.Value;
+        foreach (var employee in employees)
+        {
+            if(departmentNo == employee.departmentNo)
+            {
+                Console.WriteLine("Cannot delete this department because employees are in it.");
+                cannotDeleteDepartment = true;
+                return;
+            }
+        }
+        cannotDeleteDepartment = false;
         _departments.RemoveAll(x => x.departmentNo == departmentNo);
+        await RefreshTokenService.TryRefreshToken();
         var response = await HttpClient.DeleteAsync("Department/" + departmentNo);
         response.EnsureSuccessStatusCode();
     }
@@ -134,9 +155,11 @@ else{
         }
         var departmentToPost = JsonSerializer.Serialize(departmentToUpdate);
         var requestContent = new StringContent(departmentToPost, System.Text.Encoding.UTF8, "application/json");
+
+        await RefreshTokenService.TryRefreshToken();
         var response = await HttpClient.PutAsync("Department", requestContent);
         response.EnsureSuccessStatusCode();
     }
-    
+   
 }
   

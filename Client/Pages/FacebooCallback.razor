@@ -1,0 +1,27 @@
+﻿@page "/signin-facebook"
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+
+@code {
+    private string _accessToken;
+
+    protected override void OnInitialized()
+    {
+        var uri = new Uri(NavigationManager.Uri);
+        var fragment = uri.Fragment;
+
+        if (!string.IsNullOrEmpty(fragment))
+        {
+            var parts = fragment.Split('&');
+            var tokenPart = parts.FirstOrDefault(p => p.StartsWith("#access_token="));
+
+            if (!string.IsNullOrEmpty(tokenPart))
+            {
+                _accessToken = tokenPart.Substring("#access_token=".Length);
+            }
+        }
+        Console.WriteLine("Here with access token " + _accessToken);
+
+        // TODO: Use the access token to authenticate the user
+    }
+}

@@ -25,6 +25,8 @@ namespace HammerProject.Client.Pages
             }
             else
             {
+                var userToLogin = new UserForAuthenticationDto { UserName = _userForRegistrationDto.UserName, Password = _userForRegistrationDto.Password };
+                await AuthenticationService.Login(userToLogin);
                 NavigationManager.NavigateTo("/");
             }
         }

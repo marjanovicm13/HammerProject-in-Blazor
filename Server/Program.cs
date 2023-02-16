@@ -1,4 +1,5 @@
 using HammerProject.Server;
+using HammerProject.Server.TokenHelpers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -33,7 +34,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<HammerProjectContext>(options => options.UseMySQL(connectionString));
 
 //Asp.net core identity authentication
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddScoped<ITokenService, TokenService>();
+
+builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<HammerProjectContext>();
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -45,7 +48,8 @@ builder.Services.Configure<IdentityOptions>(options =>
 });
 
 //JWT configuration
-var jwtSettings = builder.Configuration.GetSection("JWTSettings");
+var jwtSettings = builder.Configuration.GetSection("JWTSettings"); 
+var facebookSettings = builder.Configuration.GetSection("Authentication:Facebook");
 builder.Services.AddAuthentication(opt =>
 {
     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -63,6 +67,10 @@ builder.Services.AddAuthentication(opt =>
         ValidAudience = jwtSettings["validAudience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["securityKey"]))
     };
+}).AddFacebook(facebookOptions =>
+{
+    facebookOptions.AppId = facebookSettings["AppId"];
+    facebookOptions.AppSecret = facebookSettings["AppSecret"];
 });
 
 var app = builder.Build();

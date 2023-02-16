@@ -69,6 +69,22 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\fbInit.js",
+      "PackagePath": "staticwebassets\\js\\fbInit.js"
+    },
+    {
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\fbLogin.js",
+      "PackagePath": "staticwebassets\\js\\fbLogin.js"
+    },
+    {
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\fbLogout.js",
+      "PackagePath": "staticwebassets\\js\\fbLogout.js"
+    },
+    {
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\fbUser.js",
+      "PackagePath": "staticwebassets\\js\\fbUser.js"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.HammerProject.Client.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

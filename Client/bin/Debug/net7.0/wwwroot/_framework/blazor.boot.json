@@ -32,7 +32,9 @@
       "Microsoft.Extensions.Primitives.dll": "sha256-q4ruoDSCjV\/QJY9ZkzV6uxvEvZUVrDbyUjU3SSh5SlE=",
       "Microsoft.JSInterop.dll": "sha256-NEVAdeszc3znLkYaJmx+GGKymfJY7FxK8dPfcsfwIMg=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-29PjAuoFwhjBLr05a8f687e+zt8FQ910ALzJS7iF8AA=",
+      "Newtonsoft.Json.dll": "sha256-SBbEJ29XXk2FuAYzoN8urfKUlv4AvcM814Q+YTc73g4=",
       "System.IO.Pipelines.dll": "sha256-P\/MqD0fCBd5bgTM16JC1QC\/Zz7s+CwViyzmDFkBG4\/c=",
+      "Toolbelt.Blazor.HttpClientInterceptor.dll": "sha256-bdK8iH5zRXp0oRwnxT4Nh173M2BfaQd8EiHEpBT0xJc=",
       "Microsoft.CSharp.dll": "sha256-FWCuPmOmgiOH+yf8assJ\/zkmP3u3UlIr0cEz22mW9rE=",
       "Microsoft.VisualBasic.Core.dll": "sha256-\/T9+8W0Fs9hs8GrzSVqvcqV7hSNQ4Iq0krkIjT77UZU=",
       "Microsoft.VisualBasic.dll": "sha256-Ghf0IsJjxdpJtPwfEUa94OY3n4DjBGC\/bZ04KttiT3A=",
@@ -201,15 +203,15 @@
       "mscorlib.dll": "sha256-T52Qf1cS\/UysEoWOoE2ptEJEXfGpanQX5KNLyDiLv1E=",
       "netstandard.dll": "sha256-p32h5P3QmHJ\/FGoeE6m7f5g\/8ng2PSPGZktHyMadvIs=",
       "System.Private.CoreLib.dll": "sha256-6MwQcyKbqBsoZYOcD9fQJ4iKcn1qMmWRWVEkU2LLCb0=",
-      "HammerProject.Shared.dll": "sha256-BR5fOGB0MV8dGdv219xs37FwlDrrgXIe5Rsrb4a4+4w=",
-      "HammerProject.Client.dll": "sha256-T\/FaTJyLgsBjSHnqA2JvtmXIfHA+LVTi0pJ32Rw+GHI="
+      "HammerProject.Shared.dll": "sha256-XPPbXv23kZ6GCwOB0ip2IDtXhPTisLEHa3FFYAnpBLo=",
+      "HammerProject.Client.dll": "sha256-+GGRS+2\/CGIJM7vl3fM12AcvSoaPLs8fG5T3qci2VVo="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "HammerProject.Shared.pdb": "sha256-XuXafoUCFfU1AZayh1La83rJQL4i+fFWhzjTPy+FoaA=",
-      "HammerProject.Client.pdb": "sha256-gXflWRjHJDIgaLpFPsirGVcfUI5yNAPyVUhSK7hFyBk="
+      "HammerProject.Shared.pdb": "sha256-gesblAanb02sg5SaKhUbuQA96Y12elQ1dJ1sUx3j78I=",
+      "HammerProject.Client.pdb": "sha256-pLg+GZYxfKAC5D+7Ar\/snFdNhWbL9h2jTNfqVG2w5xE="
     },
     "runtime": {
       "dotnet.7.0.2.8wsiz97xrn.js": "sha256-4mh03qTse0uNR+dQ6ydExm4jJXph0RE8zGNCtF0jiNA=",

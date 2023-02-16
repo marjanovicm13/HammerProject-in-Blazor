@@ -85,6 +85,12 @@ namespace HammerProject.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_employee", x => x.employeeNo);
+                    table.ForeignKey(
+                        name: "FK_Employee",
+                        column: x => x.departmentNo,
+                        principalTable: "department",
+                        principalColumn: "departmentNo",
+                        onDelete: ReferentialAction.Restrict);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 

@@ -1,27 +1,38 @@
-﻿using HammerProject.Shared.Entitites.DTO;
+﻿using HammerProject.Server.TokenHelpers;
+using HammerProject.Shared.Entitites.DTO;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
+
+
 namespace HammerProject.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Microsoft.AspNetCore.Mvc.Route("[controller]")]
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly HammerProjectContext _context;
-        private readonly IConfiguration _configuration;
-        private readonly IConfigurationSection _jwtSettings;
-        public AccountController(UserManager<IdentityUser> userManager, HammerProjectContext context, IConfiguration configuration)
+        private readonly ITokenService _tokenService;
+        private readonly Logger<AccountController> _logger;
+
+        public AccountController(UserManager<User> userManager, HammerProjectContext context, ITokenService tokenService)
         {
             _userManager = userManager;
             _context = context;
-            _configuration = configuration;
-            _jwtSettings = _configuration.GetSection("JwtSettings");
+            _tokenService = tokenService;
         }
 
         [HttpPost("Registration")]
@@ -31,7 +42,7 @@ namespace HammerProject.Server.Controllers
             {
                 return BadRequest();
             }
-            var user = new IdentityUser { UserName = userForRegistration.UserName };
+            var user = new User { UserName = userForRegistration.UserName };
             var result = await _userManager.CreateAsync(user, userForRegistration.Password);
             if (!result.Succeeded)
             {
@@ -39,9 +50,6 @@ namespace HammerProject.Server.Controllers
 
                 return BadRequest(new RegistrationResponseDto { Errors = errors });
             }
-            login newUser = new login { loginUserName = userForRegistration.UserName, loginPassword = userForRegistration.Password };
-            _context.login.Add(newUser);
-            _context.SaveChanges();
             return StatusCode(201);
         }
 
@@ -51,39 +59,61 @@ namespace HammerProject.Server.Controllers
             var user = await _userManager.FindByNameAsync(userForAuthentication.UserName);
             if (user == null || !await _userManager.CheckPasswordAsync(user, userForAuthentication.Password))
                 return Unauthorized(new AuthResponseDto { ErrorMessage = "Invalid Authentication" });
-            var signingCredentials = GetSigningCredentials();
-            var claims = GetClaims(user);
-            var tokenOptions = GenerateTokenOptions(signingCredentials, claims);
+            var signingCredentials = _tokenService.GetSigningCredentials();
+            var claims = _tokenService.GetClaims(user);
+            var tokenOptions = _tokenService.GenerateTokenOptions(signingCredentials, claims);
             var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-            return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token });
+
+            user.RefreshToken = _tokenService.GenerateRefreshToken();
+            user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
+
+            await _userManager.UpdateAsync(user);
+
+            return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token, RefreshToken = user.RefreshToken });
         }
 
-        private SigningCredentials GetSigningCredentials()
+        [HttpPost("FacebookRegistration")]
+        public async Task<IActionResult> RegisterFacebookUser([FromBody] FacebookUserInfo userForRegistration)
         {
-            var key = Encoding.UTF8.GetBytes(_jwtSettings["securityKey"]);
-            var secret = new SymmetricSecurityKey(key);
-
-            return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
-        }
-        private List<Claim> GetClaims(IdentityUser user)
-        {
-            var claims = new List<Claim>
+            if (userForRegistration == null)
             {
-                new Claim(ClaimTypes.Name, user.UserName)
-            };
+                return BadRequest();
+            }
+            string userEmail = userForRegistration.Email;
+            string userName = userEmail.Substring(0, userEmail.IndexOf('@'));
 
-            return claims;
+            var user = new User { Email = userForRegistration.Email, UserName = userName };
+            var result = await _userManager.CreateAsync(user);
+            if (!result.Succeeded)
+            {
+                var errors = result.Errors.Select(e => e.Description);
+
+                return BadRequest(new RegistrationResponseDto { Errors = errors });
+            }
+            return StatusCode(201);
         }
-        private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
-        {
-            var tokenOptions = new JwtSecurityToken(
-                issuer: _jwtSettings["validIssuer"],
-                audience: _jwtSettings["validAudience"],
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(Convert.ToDouble(_jwtSettings["expiryInMinutes"])),
-                signingCredentials: signingCredentials);
 
-            return tokenOptions;
+
+        [HttpPost("FacebookLogin")]
+        public async Task<IActionResult> FacebookLogin([FromBody] FacebookUserInfo userForAuthentication)
+        {
+            var user = await _userManager.FindByEmailAsync(userForAuthentication.Email);
+            if (user == null)
+            {
+                return Unauthorized(new AuthResponseDto { ErrorMessage = "Invalid Authentication" });
+            }
+            var signingCredentials = _tokenService.GetSigningCredentials();
+            var claims = _tokenService.GetClaims(user);
+            var tokenOptions = _tokenService.GenerateTokenOptions(signingCredentials, claims);
+            var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+
+            user.RefreshToken = _tokenService.GenerateRefreshToken();
+            user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
+
+            await _userManager.UpdateAsync(user);
+
+            return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token, RefreshToken = user.RefreshToken });
         }
     }
-}
+
+    }

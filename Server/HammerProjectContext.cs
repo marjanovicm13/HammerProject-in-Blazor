@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 
 namespace HammerProject.Server
 {
-    public class HammerProjectContext : IdentityDbContext<IdentityUser>
+    public class HammerProjectContext : IdentityDbContext<User>
     {
         public HammerProjectContext(
             DbContextOptions options) : base(options)

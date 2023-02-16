@@ -1,0 +1,190 @@
+﻿@inject HttpClient HttpClient
+@using System.Text.Json.Serialization
+@using System.Text.Json
+@page "/queries"
+
+<h3>Queries</h3>
+
+<button class="btn btn-dark btn-query" @onclick="openAvgSalary">What is the average salary for a Development employee in any location except London?</button>
+@if (showAvgSalary)
+{
+    <table>
+        <thead>
+            <th>Average salary</th>
+        </thead>
+        <tbody>
+            @foreach(var salary in avgSalaryIs){
+            <tr>
+                <td>@salary.AverageSalary</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+<br/>
+<button class="btn btn-dark btn-query" @onclick="openLocations">Which locations have more than one employee? What are those locations and how many employees are in each?</button>
+@if(showLocations){
+<table>
+    <thead>
+        <th>departmentLocations</th>
+        <th>Number of employees</th>
+    </thead>
+    <tbody>
+        @foreach(var loc in locationsAre){
+        <tr>
+            <td>@loc.departmentLocation</td>
+            <td>@loc.NumberOfEmployees</td>
+        </tr>
+        }
+    </tbody>
+</table>
+}
+<br />
+<button class="btn btn-dark btn-query" @onclick="(()=> showDevelopmentLocations = !showDevelopmentLocations)">How many development employees are in each location?</button>
+@if(showDevelopmentLocations){
+<table>
+    <thead>
+    <th>departmentLocations</th>
+    <th>Development employees</th>
+    </thead>
+    <tbody>
+        @foreach(var developmentLoc in developmentLocationsAre){
+        <tr>
+            <td>@developmentLoc.departmentLocation</td>
+            <td>@developmentLoc.DevelopmentEmployees</td>
+        </tr>
+            }
+    </tbody>
+</table>
+}
+<br />
+<button class="btn btn-dark btn-query" @onclick="(() => showSecondHighestSalary = !showSecondHighestSalary)"> Show the second highest salary.</button>
+@if(showSecondHighestSalary == true)
+{
+    <table>
+        <thead>
+        <th>Second highest salary</th>
+        </thead>
+        <tbody>
+            @foreach(var salary in secondHighestSalaryIs){
+            <tr>
+                <td>@salary.Salary</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+<br/>
+<button class="btn btn-dark btn-query" @onclick="(() => showVwDepartment = !showVwDepartment)">Show department view vwDepartment.</button>
+@if(showVwDepartment == true)
+{
+    <table>
+        <thead>
+            <th>departmentNo</th>
+            <th>departmentDescription</th>
+        </thead>
+        <tbody>
+            @foreach(var dep in vwDepartmentsIs){
+            <tr>
+                <td>@dep.departmentNo</td>
+                <td>@dep.departmentDescription</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+<br />
+<button class="btn btn-dark btn-query" @onclick="(() => showIncreaseSalary = !showIncreaseSalary)">Increase salary with a percentage.</button>
+@if(showIncreaseSalary == true)
+{
+    <div>
+        <label for="employeeNo">employeeNo: </label>
+        <input type="number" name="employeeNo" id="employeeNo" @bind="employeeNo" placeholder="employeeNo">
+        <br/>
+        <label for="increasePercentage">increasePercentage: </label>
+        <input type="number" name="increasePercentage" id="increasePercentage" @bind="increasePercentage">
+        <br/>
+        <button @onclick="submitSalary">Submit</button>
+    </div>
+}
+<br />
+<button class="btn btn-dark btn-query" @onclick="(() => showDecreaseSalary = !showDecreaseSalary)">Decrease salary with a percentage.</button>
+@if(showDecreaseSalary == true)
+{
+    <div>
+        <label for="employeeNo">employeeNo: </label>
+        <input type="number" name="employeeNo" id="employeeNo" @bind="employeeNo">
+        <br/>
+        <label for="decreasePercentage">decreasePercentage: </label>
+        <input type="number" name="decreasePercentage" id="decreasePercentage" @bind="increasePercentage">
+        <br/>
+        <button @onclick="(() => submitDecreaseSalary(employeeNo, increasePercentage))">Submit</button>
+    </div>
+}
+
+@code {
+    private Boolean showAvgSalary = false;
+    private Boolean showLocations = false;
+    private Boolean showDevelopmentLocations = false;
+    private Boolean showSecondHighestSalary = false;
+    private Boolean showVwDepartment = false;
+    private Boolean showIncreaseSalary = false;
+    private Boolean showDecreaseSalary = false;
+    private List<AvgSalary> avgSalaryIs = new List<AvgSalary>();
+    private List<Locations> locationsAre = new List<Locations>();
+    private List<DevelopmentLocations> developmentLocationsAre = new List<DevelopmentLocations>();
+    private List<SecondHighestSalary> secondHighestSalaryIs = new List<SecondHighestSalary>();
+    private List<vwDepartment> vwDepartmentsIs = new List<vwDepartment>();
+    private int employeeNo { get; set; }
+    private int increasePercentage { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var avgSalary = await HttpClient.GetFromJsonAsync<string>("Query/avgSalary");
+        avgSalaryIs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<AvgSalary>>(avgSalary);
+
+        var locations = await HttpClient.GetFromJsonAsync<string>("Query/locations");
+        locationsAre = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Locations>>(locations);
+
+        var developmentLocations = await HttpClient.GetFromJsonAsync<string>("Query/developmentLocations");
+        developmentLocationsAre = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DevelopmentLocations>>(developmentLocations);
+
+        var secondHighestSalary = await HttpClient.GetFromJsonAsync<string>("Query/secondHighestSalary");
+        secondHighestSalaryIs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<SecondHighestSalary>>(secondHighestSalary);
+
+        var vwDepartment = await HttpClient.GetFromJsonAsync<string>("Query/vwDepartment");
+        vwDepartmentsIs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<vwDepartment>>(vwDepartment);
+
+    }
+
+    private async void openAvgSalary()
+    {
+        showAvgSalary = !showAvgSalary;
+    }
+
+    private async void openLocations()
+    {
+        showLocations = !showLocations;
+    }
+
+    private async void submitSalary()
+    {
+        IncreaseSalary increase = new IncreaseSalary()
+            {
+                employeeNo = employeeNo,
+                increasePercentage = increasePercentage
+            };
+        var salaryToIncrease = JsonSerializer.Serialize(increase);
+        var requestContent = new StringContent(salaryToIncrease, System.Text.Encoding.UTF8, "application/json");
+        var response = await HttpClient.PostAsync("Query/increaseSalary", requestContent);
+        response.EnsureSuccessStatusCode();
+    }
+
+    private async void submitDecreaseSalary(int empNo, int incPercentage)
+    {
+        var salaryToDecrease = JsonSerializer.Serialize(new IncreaseSalary { employeeNo = empNo, increasePercentage = incPercentage });
+        var requestContent = new StringContent(salaryToDecrease, System.Text.Encoding.UTF8, "application/json");
+        var response = await HttpClient.PostAsync("Query/decreaseSalary", requestContent);
+        response.EnsureSuccessStatusCode();
+    }
+}

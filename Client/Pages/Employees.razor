@@ -1,4 +1,8 @@
 ﻿@inject HttpClient HttpClient
+@inject RefreshTokenService RefreshTokenService
+@inject EmployeeStateContainerService employeeStateContainerService
+@inject NavigationManager navigationManager
+@implements IDisposable
 @using System.Text.Json
 @using System.Text.Json.Serialization
 
@@ -6,8 +10,7 @@
 
 <AuthorizeView>
     <Authorized>
-        The user is authorized
-        <form>
+
             <label for="ename">Employee name: </label>
             <input name="ename" id="ename" type="text" @bind="employeeName">
             <br>
@@ -21,7 +24,7 @@
             <input type="date" name="lastModifyDate" id="lastModifyDate">
             <br>
             <button @onclick="addEmployee" id="add" class="btn btn-dark">Add new employee</button>
-        </form>
+
     </Authorized>
     <NotAuthorized>
         The User is not authorized to add new employees or to update/delete current ones.
@@ -85,12 +88,14 @@ else{
 
     protected override async Task OnInitializedAsync()
     {
+        employeeStateContainerService.OnStateChange += StateHasChanged;
         await getEmployees();
     }
 
     private async Task<List<EmployeeUpdate>> getEmployees()
     {
         employees = await HttpClient.GetFromJsonAsync<List<employee>>("Employee/getEmployees");
+        employeeStateContainerService.SetValue(employees);
         foreach (var emp in employees)
         {
             EmployeeUpdate _emp = new EmployeeUpdate()
@@ -108,6 +113,7 @@ else{
 
     private async void addEmployee()
     {
+
         employee _employee = new employee()
             {
                 employeeName = employeeName,
@@ -117,16 +123,21 @@ else{
             };
         Console.WriteLine(_employee);
 
+        employeeStateContainerService.AddValue(_employee);
+
         var employeeToPost = JsonSerializer.Serialize(_employee);
         var requestContent = new StringContent(employeeToPost, System.Text.Encoding.UTF8, "application/json");
-
+        await RefreshTokenService.TryRefreshToken();
         var response = await HttpClient.PostAsync("Employee", requestContent);
         response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("/", true);
     }
 
     private async void deleteEmployee(int employeeNo)
     {
         _employees.RemoveAll(x => x.employeeNo == employeeNo);
+        employeeStateContainerService.RemoveValue(employeeNo);
+        await RefreshTokenService.TryRefreshToken();
         var response = await HttpClient.DeleteAsync("Employee/" + employeeNo);
         response.EnsureSuccessStatusCode();
     }
@@ -145,7 +156,14 @@ else{
         }
         var employeeToPost = JsonSerializer.Serialize(employeeToUpdate);
         var requestContent = new StringContent(employeeToPost, System.Text.Encoding.UTF8, "application/json");
+
+        await RefreshTokenService.TryRefreshToken();
         var response = await HttpClient.PutAsync("Employee", requestContent);
         response.EnsureSuccessStatusCode();
+    }
+
+    public void Dispose()
+    {
+        employeeStateContainerService.OnStateChange -= StateHasChanged;
     }
 }
