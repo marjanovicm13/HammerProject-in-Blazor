@@ -203,15 +203,15 @@
       "mscorlib.dll": "sha256-T52Qf1cS\/UysEoWOoE2ptEJEXfGpanQX5KNLyDiLv1E=",
       "netstandard.dll": "sha256-p32h5P3QmHJ\/FGoeE6m7f5g\/8ng2PSPGZktHyMadvIs=",
       "System.Private.CoreLib.dll": "sha256-6MwQcyKbqBsoZYOcD9fQJ4iKcn1qMmWRWVEkU2LLCb0=",
-      "HammerProject.Shared.dll": "sha256-XPPbXv23kZ6GCwOB0ip2IDtXhPTisLEHa3FFYAnpBLo=",
-      "HammerProject.Client.dll": "sha256-+GGRS+2\/CGIJM7vl3fM12AcvSoaPLs8fG5T3qci2VVo="
+      "HammerProject.Shared.dll": "sha256-He63s4+dvQQRkoQ84OIC+fzx2CnAcYt3VDHfknhrW1M=",
+      "HammerProject.Client.dll": "sha256-PJ1PVN5WlkbxMRkpoxz\/e9OlUbJst16gjL68Au1VDsw="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "HammerProject.Shared.pdb": "sha256-gesblAanb02sg5SaKhUbuQA96Y12elQ1dJ1sUx3j78I=",
-      "HammerProject.Client.pdb": "sha256-pLg+GZYxfKAC5D+7Ar\/snFdNhWbL9h2jTNfqVG2w5xE="
+      "HammerProject.Shared.pdb": "sha256-bt\/cSH8fpA1fBmUviw89vjHZjfjZy7\/Wr4hsaEYfJgQ=",
+      "HammerProject.Client.pdb": "sha256-ERLifGKI8hi2BOSmWa34xWGoj3PSy+RDLca\/t5F4gxM="
     },
     "runtime": {
       "dotnet.7.0.2.8wsiz97xrn.js": "sha256-4mh03qTse0uNR+dQ6ydExm4jJXph0RE8zGNCtF0jiNA=",

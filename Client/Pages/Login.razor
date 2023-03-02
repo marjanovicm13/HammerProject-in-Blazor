@@ -3,8 +3,10 @@
 @inject HttpClient httpClient
 @inject AuthenticationStateProvider authStateProvider
 @inject IAuthenticationService _authService
+@inject ILocalStorageService _storageService
 @using System.Text.Json
 @using Newtonsoft.Json.Linq
+@using Blazored.LocalStorage;
 
 <PageTitle>Login</PageTitle>
 
@@ -44,37 +46,43 @@
     </div>
 </div>
 
-
 @code {
     private static string tokenFace = "";
+    private Boolean loggingWithFacebook = false;
+    private static Func<Task> getUserStatic;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        getUserStatic = getuser;
+    }
 
     public async Task LoginWithFacebook()
     {
+        loggingWithFacebook = true;
         await jsRunn.InvokeAsync<object>("fbLogin");
-        await Task.Delay(10000);
-        Console.WriteLine("response "+ tokenFace);
-        getuser();
+        loggingWithFacebook = false;
     }
-
 
     [JSInvokable("FbLoginProcessCallback")]
     public static async void FbLoginProcessCallback(object result)
     {
         JObject obj = JObject.Parse(result.ToString());
         tokenFace = obj["authResponse"]["accessToken"].ToString();
+
+        await getUserStatic?.Invoke();
     }
 
-    private async void getuser()
+    private async Task getuser()
     {
-        Console.WriteLine(tokenFace);
         if (tokenFace != null && tokenFace != "")
         {
             var userInfo = await httpClient.GetFromJsonAsync<FacebookUserInfo>($"https://graph.facebook.com/v12.0/me?access_token={tokenFace}&fields=name,email");
             Console.WriteLine(userInfo.Email);
-            var result = await _authService.LoginFacebook(new FacebookUserInfo{Email = userInfo.Email});
-            if (!result.IsAuthSuccessful)
+            var resultIs = await _authService.LoginFacebook(new FacebookUserInfo{Email = userInfo.Email});
+            if (!resultIs.IsAuthSuccessful)
             {
-                Error = result.ErrorMessage;
+                Error = resultIs.ErrorMessage;
                 ShowAuthError = true;
             }
             else

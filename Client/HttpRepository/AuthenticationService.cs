@@ -64,20 +64,20 @@ namespace HammerProject.Client.HttpRepository
             var content = JsonSerializer.Serialize(userInfo);
             var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
             var authResult = await _httpClient.PostAsync("Account/FacebookLogin", bodyContent);
-            var authContent = await authResult.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<AuthResponseDto>(authContent, _options);
-            Console.WriteLine("Result of login is " + result);
+            
             if (!authResult.IsSuccessStatusCode)
             {
-                var registerUser = await _httpClient.PostAsync("Account/FacebookRegistration", bodyContent);
-                authContent = await registerUser.Content.ReadAsStringAsync();
-                var regResult = JsonSerializer.Deserialize<RegistrationResponseDto>(authContent, _options);
+               await _httpClient.PostAsync("Account/FacebookRegistration", bodyContent);
+               authResult = await _httpClient.PostAsync("Account/FacebookLogin", bodyContent);
             }
+            var authContent = await authResult.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<AuthResponseDto>(authContent, _options);
 
             await _localStorage.SetItemAsync("authToken", result.Token);
             await _localStorage.SetItemAsync("refreshToken", result.RefreshToken);
-            ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(userInfo.Email);
+            ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(userInfo.Email.Substring(0, userInfo.Email.IndexOf('@')));
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", result.Token);
+            
             return new AuthResponseDto { IsAuthSuccessful = true };
         }
         public async Task Logout()

@@ -8,7 +8,10 @@
 
 
 
-        DotNet.invokeMethodAsync('HammerProject.Client', 'FbLoginProcessCallback', response);
+        DotNet.invokeMethodAsync('HammerProject.Client', 'FbLoginProcessCallback', response).then(() => {
+
+        });
+
 
     }, { scope: 'public_profile, email' });
 };

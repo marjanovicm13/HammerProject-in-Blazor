@@ -9,6 +9,8 @@ namespace HammerProject
     public class FacebookUserInfo
     {
             public string Email { get; set; }
+
+
         // Add any other properties you want to retrieve from the Graph API
 
     }
