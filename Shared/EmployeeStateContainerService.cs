@@ -30,6 +30,11 @@ namespace HammerProject
             NotifyStateChanged();
         }
 
+        public void RefreshValue()
+        {
+            NotifyStateChanged();
+        }
+
         private void NotifyStateChanged() => OnStateChange?.Invoke();
     }
 }

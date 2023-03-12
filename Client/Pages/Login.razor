@@ -48,7 +48,6 @@
 
 @code {
     private static string tokenFace = "";
-    private Boolean loggingWithFacebook = false;
     private static Func<Task> getUserStatic;
 
     protected override void OnInitialized()
@@ -59,18 +58,23 @@
 
     public async Task LoginWithFacebook()
     {
-        loggingWithFacebook = true;
         await jsRunn.InvokeAsync<object>("fbLogin");
-        loggingWithFacebook = false;
     }
 
     [JSInvokable("FbLoginProcessCallback")]
     public static async void FbLoginProcessCallback(object result)
     {
-        JObject obj = JObject.Parse(result.ToString());
-        tokenFace = obj["authResponse"]["accessToken"].ToString();
+        try
+        {
+            JObject obj = JObject.Parse(result.ToString());
+            tokenFace = obj["authResponse"]["accessToken"].ToString();
 
-        await getUserStatic?.Invoke();
+            await getUserStatic?.Invoke();
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine("Facebook login cancelled. " + e);
+        }
     }
 
     private async Task getuser()
