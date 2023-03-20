@@ -78,18 +78,40 @@ else{
     </table>
 }
 
+@if (departmentExists == false)
+{
+    <p>Cannot add this employee because the department assigned doesn't exist.</p>
+}
+
 @code {
     private List<employee>? employees = new List<employee>();
     private List<EmployeeUpdate> _employees = new List<EmployeeUpdate>();
+    private List<department> _departments = new List<department>();
 
     private string? employeeName { get; set; }
     private int salary { get; set; }
     private int departmentNo { get; set; }
+    private Boolean departmentExists { get; set; } = true;
 
     protected override async Task OnInitializedAsync()
     {
         employeeStateContainerService.OnStateChange += StateHasChanged;
-        await getEmployees();
+        try
+        {
+            await getEmployees();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+        try
+        {
+            _departments = await HttpClient.GetFromJsonAsync<List<department>>("Department/getDepartments");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
     }
 
     private async Task<List<EmployeeUpdate>> getEmployees()
@@ -113,24 +135,36 @@ else{
 
     private async void addEmployee()
     {
-
-        employee _employee = new employee()
+        foreach(var dep in _departments)
+        {
+            if(dep.departmentNo == departmentNo)
             {
-                employeeName = employeeName,
-                salary = salary,
-                departmentNo = departmentNo,
-                lastModifyDate = null
-            };
-        Console.WriteLine(_employee);
+                departmentExists = true;
+                break;
+            }
+            departmentExists = false;
+        }
 
-        employeeStateContainerService.AddValue(_employee);
+        if (departmentExists == true)
+        {
+            employee _employee = new employee()
+                {
+                    employeeName = employeeName,
+                    salary = salary,
+                    departmentNo = departmentNo,
+                    lastModifyDate = null
+                };
+            Console.WriteLine(_employee);
 
-        var employeeToPost = JsonSerializer.Serialize(_employee);
-        var requestContent = new StringContent(employeeToPost, System.Text.Encoding.UTF8, "application/json");
-        await RefreshTokenService.TryRefreshToken();
-        var response = await HttpClient.PostAsync("Employee", requestContent);
-        response.EnsureSuccessStatusCode();
-        navigationManager.NavigateTo("/", true);
+            employeeStateContainerService.AddValue(_employee);
+
+            var employeeToPost = JsonSerializer.Serialize(_employee);
+            var requestContent = new StringContent(employeeToPost, System.Text.Encoding.UTF8, "application/json");
+            await RefreshTokenService.TryRefreshToken();
+            var response = await HttpClient.PostAsync("Employee", requestContent);
+            response.EnsureSuccessStatusCode();
+            navigationManager.NavigateTo("/", true);
+        }
     }
 
     private async void deleteEmployee(int employeeNo)

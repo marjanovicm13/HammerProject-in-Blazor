@@ -137,23 +137,69 @@
     private List<vwDepartment> vwDepartmentsIs = new List<vwDepartment>();
     private int employeeNo { get; set; }
     private int increasePercentage { get; set; }
+    private List<employee>? employees = new List<employee>();
+    private Boolean employeeExists = false;
 
     protected override async Task OnInitializedAsync()
     {
-        var avgSalary = await HttpClient.GetFromJsonAsync<string>("Query/avgSalary");
-        avgSalaryIs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<AvgSalary>>(avgSalary);
+        try
+        {
+            var avgSalary = await HttpClient.GetFromJsonAsync<string>("Query/avgSalary");
+            avgSalaryIs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<AvgSalary>>(avgSalary);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
 
-        var locations = await HttpClient.GetFromJsonAsync<string>("Query/locations");
-        locationsAre = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Locations>>(locations);
+        try
+        {
+            var locations = await HttpClient.GetFromJsonAsync<string>("Query/locations");
+            locationsAre = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Locations>>(locations);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
 
-        var developmentLocations = await HttpClient.GetFromJsonAsync<string>("Query/developmentLocations");
-        developmentLocationsAre = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DevelopmentLocations>>(developmentLocations);
+        try
+        {
+            var developmentLocations = await HttpClient.GetFromJsonAsync<string>("Query/developmentLocations");
+            developmentLocationsAre = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DevelopmentLocations>>(developmentLocations);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
 
-        var secondHighestSalary = await HttpClient.GetFromJsonAsync<string>("Query/secondHighestSalary");
-        secondHighestSalaryIs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<SecondHighestSalary>>(secondHighestSalary);
+        try
+        {
+            var secondHighestSalary = await HttpClient.GetFromJsonAsync<string>("Query/secondHighestSalary");
+            secondHighestSalaryIs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<SecondHighestSalary>>(secondHighestSalary);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
 
-        var vwDepartment = await HttpClient.GetFromJsonAsync<string>("Query/vwDepartment");
-        vwDepartmentsIs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<vwDepartment>>(vwDepartment);
+        try
+        {
+            var vwDepartment = await HttpClient.GetFromJsonAsync<string>("Query/vwDepartment");
+            vwDepartmentsIs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<vwDepartment>>(vwDepartment);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+
+        try
+        {
+            employees = await HttpClient.GetFromJsonAsync<List<employee>>("Employee/getEmployees");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
 
     }
 
@@ -169,22 +215,46 @@
 
     private async void submitSalary()
     {
-        IncreaseSalary increase = new IncreaseSalary()
+        foreach(var emp in employees)
+        {
+            if(emp.employeeNo == employeeNo)
             {
-                employeeNo = employeeNo,
-                increasePercentage = increasePercentage
-            };
-        var salaryToIncrease = JsonSerializer.Serialize(increase);
-        var requestContent = new StringContent(salaryToIncrease, System.Text.Encoding.UTF8, "application/json");
-        var response = await HttpClient.PostAsync("Query/increaseSalary", requestContent);
-        response.EnsureSuccessStatusCode();
+                employeeExists = true;
+            }
+        }
+
+        if (employeeExists == true)
+        {
+            IncreaseSalary increase = new IncreaseSalary()
+                {
+                    employeeNo = employeeNo,
+                    increasePercentage = increasePercentage
+                };
+            var salaryToIncrease = JsonSerializer.Serialize(increase);
+            var requestContent = new StringContent(salaryToIncrease, System.Text.Encoding.UTF8, "application/json");
+            var response = await HttpClient.PostAsync("Query/increaseSalary", requestContent);
+            response.EnsureSuccessStatusCode();
+            employeeExists = false;
+        }
     }
 
     private async void submitDecreaseSalary(int empNo, int incPercentage)
     {
-        var salaryToDecrease = JsonSerializer.Serialize(new IncreaseSalary { employeeNo = empNo, increasePercentage = incPercentage });
-        var requestContent = new StringContent(salaryToDecrease, System.Text.Encoding.UTF8, "application/json");
-        var response = await HttpClient.PostAsync("Query/decreaseSalary", requestContent);
-        response.EnsureSuccessStatusCode();
+        foreach (var emp in employees)
+        {
+            if (emp.employeeNo == employeeNo)
+            {
+                employeeExists = true;
+            }
+        }
+
+        if (employeeExists == true)
+        {
+            var salaryToDecrease = JsonSerializer.Serialize(new IncreaseSalary { employeeNo = empNo, increasePercentage = incPercentage });
+            var requestContent = new StringContent(salaryToDecrease, System.Text.Encoding.UTF8, "application/json");
+            var response = await HttpClient.PostAsync("Query/decreaseSalary", requestContent);
+            response.EnsureSuccessStatusCode();
+            employeeExists = false;
+        }
     }
 }

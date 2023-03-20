@@ -132,7 +132,7 @@ namespace HammerProject.Server.Controllers
         [Route("vwDepartment")]
         public JsonResult GetViewVwDepartment()
         {
-            string query = @"SELECT * FROM company.vwdepartment;";
+            string query = @"SELECT departmentNo, CONCAT(departmentName, ' ', departmentLocation) AS 'departmentDescription' FROM department;"; 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DefaultConnection");
             MySqlDataReader myReader;
@@ -156,7 +156,7 @@ namespace HammerProject.Server.Controllers
         [Route("increaseSalary")]
         public JsonResult IncreaseSalary([FromBody] IncreaseSalary incSalary)
         {
-            string query = @"call company.spIncreaseSalary(@employeeNo, @increasePercentage);";
+            string query = @"update employee set salary = salary + (salary * (@increasePercentage/100)) where employee.employeeNo = @EmployeeNo;";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DefaultConnection");
             MySqlDataReader myReader;
@@ -180,7 +180,7 @@ namespace HammerProject.Server.Controllers
         [Route("decreaseSalary")]
         public JsonResult DecreaseSalary([FromBody] IncreaseSalary incSalary)
         {
-            string query = @"call company.spDecreaseSalary(@employeeNo, @decreasePercentage);";
+            string query = @"update employee set salary = salary - (salary * (@decreasePercentage/100)) where employee.employeeNo = @employeeNo;";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DefaultConnection");
             MySqlDataReader myReader;

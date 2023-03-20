@@ -1,5 +1,10 @@
 ﻿window.fbUser = function () {
-    FB.getLoginStatus(function (response) {
-        statusChangeCallback(response);
+    window.FB.getLoginStatus(function (response) {
+        console.log(response);
+       // statusChangeCallback(response);
+
+        DotNet.invokeMethodAsync('HammerProject.Client', 'FbUserProcessCallback', response).then(() => {
+
+        });
     });
 }

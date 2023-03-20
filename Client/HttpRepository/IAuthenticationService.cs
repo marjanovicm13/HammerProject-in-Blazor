@@ -12,6 +12,7 @@ namespace HammerProject.Client.HttpRepository
         Task<AuthResponseDto> Login(UserForAuthenticationDto userForAuthentication);
         Task<AuthResponseDto> LoginFacebook(FacebookUserInfo userInfo);
         Task Logout();
+        Task FBLogout();
         Task<string> RefreshToken();
     }
 }

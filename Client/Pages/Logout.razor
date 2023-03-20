@@ -1,10 +1,67 @@
 ﻿@page "/logout"
 @inject NavigationManager NavigationManager
+@inject IJSRuntime jsRuntime
+@inject HttpClient httpClient
+@inject AuthenticationStateProvider authStateProvider
+@inject IAuthenticationService _authService
+@using System.Text.Json
+@using Newtonsoft.Json.Linq
+@using Blazored.LocalStorage;
 
 @code {
     [Inject]
     public IAuthenticationService AuthenticationService { get; set; }
+    private static Func<Task> fbUserStatic;
+    private static Func<Task> normalUserStatic;
+
+
     protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        fbUserStatic = FBLogout;
+        normalUserStatic = UserLogout;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await jsRuntime.InvokeAsync<object>("fbUser");
+        }
+
+    }
+    [JSInvokable("FbUserProcessCallback")]
+    public static async void FbUserProcessCallback(object result)
+    {
+        try
+        {
+            JObject obj = JObject.Parse(result.ToString());
+            var fbUser = obj["status"].ToString();
+            Console.WriteLine(fbUser);
+            if(fbUser == "unknown")
+            {
+                Console.WriteLine("normal user");
+                await normalUserStatic?.Invoke();
+            }
+            else
+            {
+                Console.WriteLine("facebook user");
+                await fbUserStatic?.Invoke();
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
+    private async Task FBLogout()
+    {
+        await AuthenticationService.FBLogout();
+        NavigationManager.NavigateTo("/");
+    }
+
+    private async Task UserLogout()
     {
         await AuthenticationService.Logout();
         NavigationManager.NavigateTo("/");

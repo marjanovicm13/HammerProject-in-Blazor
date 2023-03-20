@@ -86,7 +86,13 @@ else{
     protected override async Task OnInitializedAsync()
     {
         base.OnInitialized();   
-        await getDepartments();
+        try{
+            await getDepartments();
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+        }
     }
 
     private async Task<List<DepartmentUpdate>> getDepartments()

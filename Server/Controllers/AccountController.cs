@@ -10,10 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.JSInterop;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-
+using Microsoft.JSInterop;
 
 
 namespace HammerProject.Server.Controllers
@@ -27,12 +28,15 @@ namespace HammerProject.Server.Controllers
         private readonly HammerProjectContext _context;
         private readonly ITokenService _tokenService;
         private readonly Logger<AccountController> _logger;
+        private readonly IJSRuntime jSRuntime;
+        
 
-        public AccountController(UserManager<User> userManager, HammerProjectContext context, ITokenService tokenService)
+        public AccountController(UserManager<User> userManager, HammerProjectContext context, ITokenService tokenService, IJSRuntime jS)
         {
             _userManager = userManager;
             _context = context;
             _tokenService = tokenService;
+            jSRuntime = jS;
         }
 
         [HttpPost("Registration")]
@@ -114,6 +118,7 @@ namespace HammerProject.Server.Controllers
 
             return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token, RefreshToken = user.RefreshToken });
         }
+
     }
 
     }

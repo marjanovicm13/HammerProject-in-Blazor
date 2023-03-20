@@ -4,6 +4,7 @@ using HammerProject.Shared.Entitites.DTO;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
+using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
@@ -84,10 +85,19 @@ namespace HammerProject.Client.HttpRepository
         {
             await _localStorage.RemoveItemAsync("authToken");
             await _localStorage.RemoveItemAsync("refreshToken");
+            ((AuthStateProvider)_authStateProvider).NotifyUserLogout();
+            _httpClient.DefaultRequestHeaders.Authorization = null;
+        }
+
+        public async Task FBLogout()
+        {
+            await _localStorage.RemoveItemAsync("authToken");
+            await _localStorage.RemoveItemAsync("refreshToken");
             await jSRuntime.InvokeAsync<object>("fbLogout");
             ((AuthStateProvider)_authStateProvider).NotifyUserLogout();
             _httpClient.DefaultRequestHeaders.Authorization = null;
         }
+
         public async Task<string> RefreshToken()
         {
             var token = await _localStorage.GetItemAsync<string>("authToken");
