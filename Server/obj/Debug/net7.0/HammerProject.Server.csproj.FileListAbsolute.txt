@@ -209,3 +209,7 @@ D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Bla
 D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Newtonsoft.Json.dll
 D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Microsoft.Owin.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Microsoft.Owin.Security.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Microsoft.Owin.Security.Facebook.dll
+D:\Fakultet\Fakultet\Projekti\Blazor\Hammer\HammerProjectV2\HammerProject-in-Blazor\Server\bin\Debug\net7.0\Owin.dll

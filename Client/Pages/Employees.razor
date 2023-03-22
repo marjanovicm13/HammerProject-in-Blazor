@@ -70,7 +70,7 @@ else{
                         <td><input type="text" class="updateInput" placeholder="@employee.salary" @bind="@employee.salary"></td>
                         <td><input type="text" class="updateInput" placeholder="@employee.departmentNo" @bind="@employee.departmentNo"></td>
                         <td><button class="btn btn-dark" @onclick="(()=> updateEmployee(employee))">Submit</button></td>
-                        <td><button class="btn btn-dark" @onclick="(() => employee.updateClicked = false)">Cancel</button></td>
+                        <td><button class="btn btn-dark" @onclick="(()=> cancelUpdate(employee))">Cancel</button></td>
                     }
                 </tr>
             }
@@ -83,6 +83,11 @@ else{
     <p>Cannot add this employee because the department assigned doesn't exist.</p>
 }
 
+@if (departmentExistsUpdate == false)
+{
+    <p>Cannot update this employee because the department assigned doesn't exist.</p>
+}
+
 @code {
     private List<employee>? employees = new List<employee>();
     private List<EmployeeUpdate> _employees = new List<EmployeeUpdate>();
@@ -92,6 +97,7 @@ else{
     private int salary { get; set; }
     private int departmentNo { get; set; }
     private Boolean departmentExists { get; set; } = true;
+    private Boolean departmentExistsUpdate { get; set; } = true;
 
     protected override async Task OnInitializedAsync()
     {
@@ -135,14 +141,21 @@ else{
 
     private async void addEmployee()
     {
-        foreach(var dep in _departments)
+        if (!_departments.Any())
         {
-            if(dep.departmentNo == departmentNo)
-            {
-                departmentExists = true;
-                break;
-            }
             departmentExists = false;
+        }
+        else
+        {
+            foreach (var dep in _departments)
+            {
+                if (dep.departmentNo == departmentNo)
+                {
+                    departmentExists = true;
+                    break;
+                }
+                departmentExists = false;
+            }
         }
 
         if (departmentExists == true)
@@ -178,33 +191,50 @@ else{
 
     private async void updateEmployee(EmployeeUpdate employeeToUpdate)
     {
-        foreach (var emp in _employees)
+        foreach (var dep in _departments)
         {
-            if (emp.employeeNo == employeeToUpdate.employeeNo)
+            if (dep.departmentNo == employeeToUpdate.departmentNo)
             {
-                emp.employeeName = employeeToUpdate.employeeName;
-                emp.salary = employeeToUpdate.salary;
-                emp.departmentNo = employeeToUpdate.departmentNo;
-                emp.updateClicked = false;
+                departmentExistsUpdate = true;
+                break;
             }
+            departmentExistsUpdate = false;
         }
 
-        foreach (var emp in employees)
+        if (departmentExistsUpdate == true)
         {
-            if (emp.employeeNo == employeeToUpdate.employeeNo)
+            foreach (var emp in employees)
             {
-                emp.employeeName = employeeToUpdate.employeeName;
-                emp.salary = employeeToUpdate.salary;
-                emp.departmentNo = employeeToUpdate.departmentNo;
+                if (emp.employeeNo == employeeToUpdate.employeeNo)
+                {
+                    emp.employeeName = employeeToUpdate.employeeName;
+                    emp.salary = employeeToUpdate.salary;
+                    emp.departmentNo = employeeToUpdate.departmentNo;
+                }
+            }
+            employeeToUpdate.updateClicked = false;
+            var employeeToPost = JsonSerializer.Serialize(employeeToUpdate);
+            var requestContent = new StringContent(employeeToPost, System.Text.Encoding.UTF8, "application/json");
+            employeeStateContainerService.SetValue(employees);
+            await RefreshTokenService.TryRefreshToken();
+            var response = await HttpClient.PutAsync("Employee", requestContent);
+            response.EnsureSuccessStatusCode();
+        }
+    }
+
+    private void cancelUpdate(EmployeeUpdate employeeToUpdate)
+    {
+        foreach(var oldEmployee in employees)
+        {
+            if(employeeToUpdate.employeeNo == oldEmployee.employeeNo){
+
+                employeeToUpdate.departmentNo = oldEmployee.departmentNo;
+                employeeToUpdate.salary = oldEmployee.salary;
+                employeeToUpdate.employeeName = oldEmployee.employeeName;
+                employeeToUpdate.updateClicked = false;
+
             }
         }
-
-        var employeeToPost = JsonSerializer.Serialize(employeeToUpdate);
-        var requestContent = new StringContent(employeeToPost, System.Text.Encoding.UTF8, "application/json");
-        employeeStateContainerService.SetValue(employees);
-        await RefreshTokenService.TryRefreshToken();
-        var response = await HttpClient.PutAsync("Employee", requestContent);
-        response.EnsureSuccessStatusCode();
     }
 
     public void Dispose()

@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
-    builder.WithOrigins("https://localhost:7253", "https://localhost:44391", "http://localhost:5197")
+    builder.WithOrigins("https://localhost:7253", "https://localhost:44391", "http://localhost:5197", "https://web.facebook.com/x/oauth/logout?access_token=EAAs3Dsop8xABALdJI2oNvtSKdy8ie4HOBc6VutYOi3bfna9RHq9CYXUnUXXFzRBvN1iLdRNYjMlM8lb1V70Hmk95CMRun3bM2xlssBtppH77TGr4ZAezzLv9iZABnc0Jk0wK5A59cNBZBDZCSxpHn9tZBiNdPpVuRVNZAEb45D1Xe707dFf5hx6xmRJFK1lbEZD&_rdc=1&_rdr")
              .AllowAnyHeader()
             .AllowAnyMethod()
    );
