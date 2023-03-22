@@ -78,7 +78,7 @@ namespace HammerProject.Server.Controllers
         {
             string query = @"SELECT departmentLocation, IF(departmentName = 'development', count(employee.departmentNo), 0) as 'DevelopmentEmployees' 
 	                            FROM department, employee
-	                            WHERE employee.departmentNo = department.departmentNo 
+	                            WHERE employee.departmentNo = department.departmentNo and departmentName = 'development'
 	                            GROUP BY departmentName, departmentLocation
 	                            ;";
             DataTable table = new DataTable();

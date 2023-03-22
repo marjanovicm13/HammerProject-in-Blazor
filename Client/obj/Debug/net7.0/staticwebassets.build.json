@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NJBWe53+82tkEPI6nGIFLG8Ys21rmd/9uJRH3u2YdPI=",
+  "Hash": "Yw0O23H35jPf2URFzKlmcGnsbF8VWX135WTsnUJ9wKk=",
   "Source": "HammerProject.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -7376,6 +7376,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\dropdownClick.js",
+      "SourceId": "HammerProject.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "js/dropdownClick.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\dropdownClick.js"
+    },
+    {
+      "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\employeeDropdown.js",
+      "SourceId": "HammerProject.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "js/employeeDropdown.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\employeeDropdown.js"
     },
     {
       "Identity": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\fbInit.js",

@@ -2,6 +2,7 @@
 @inject RefreshTokenService RefreshTokenService
 @inject EmployeeStateContainerService employeeStateContainerService
 @inject NavigationManager navigationManager
+@inject IJSRuntime jsRunn
 @using System.Text.Json
 @using System.Text.Json.Serialization
 @using System.Security.Claims
@@ -10,8 +11,15 @@
 
 <AuthorizeView>
     <Authorized>
-            <label for="dname">Department name:</label><br>
-            <input type="text" id="dname" name="dname" @bind="departmentName"><br>
+            <div class="dropdown">
+                <button @onclick="dropdownClick" class="dropbtn">Choose department name</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" @onclick='()=>departmentNameSave("Development")'>Development</a>
+                <a href="#" @onclick='()=>departmentNameSave("Sales")'>Sales</a>
+                </div>
+            </div>
+            <span>@departmentName</span>
+            <br />
             <label for="dlocation">Department location:</label><br>
             <input type="text" id="dlocation" name="dname" @bind="departmentLocation"><br><br>
             <button @onclick="addDepartment" id="add" class="btn btn-dark" style="margin-top: -35px">Add new department</button>
@@ -95,6 +103,11 @@ else{
         }
     }
 
+    private async void departmentNameSave(string name)
+    {
+        departmentName = name;
+    }
+
     private async Task<List<DepartmentUpdate>> getDepartments()
     {
         departments = await HttpClient.GetFromJsonAsync<List<department>>("Department/getDepartments");
@@ -166,6 +179,11 @@ else{
         var response = await HttpClient.PutAsync("Department", requestContent);
         response.EnsureSuccessStatusCode();
     }
-   
+
+    private async void dropdownClick()
+    {
+        await jsRunn.InvokeAsync<object>("dropdownClick");
+    }
+
 }
   

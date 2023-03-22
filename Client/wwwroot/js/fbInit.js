@@ -3,7 +3,7 @@
         appId: '3156761404633872',
         cookie: true,
         xfbml: true,
-        version: 'v12.0'
+        version: 'v15.0'
     });
     console.log("initialized");
     window.FB.AppEvents.logPageView();

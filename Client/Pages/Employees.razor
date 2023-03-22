@@ -2,6 +2,7 @@
 @inject RefreshTokenService RefreshTokenService
 @inject EmployeeStateContainerService employeeStateContainerService
 @inject NavigationManager navigationManager
+@inject IJSRuntime jsRunn
 @implements IDisposable
 @using System.Text.Json
 @using System.Text.Json.Serialization
@@ -17,8 +18,15 @@
             <label for="salary">Salary: </label>
             <input name="salary" id="salary" type="number" @bind="salary">
             <br>
-            <label for="departmentNo">Department number: </label>
-            <input name="departmentNo" id="departmentNo" type="number" @bind="departmentNo">
+            <div class="dropdown">
+                <button @onclick="dropdownClick" class="dropbtn">Choose department</button>
+                <div id="myEmployeeDropdown" class="dropdown-content">
+                    @foreach(var dep in _departments){
+                        <a href="#" @onclick='()=>departmentNumberSave(dep.departmentNo)'>@dep.departmentName @dep.departmentLocation</a>
+                    }
+                </div>
+            </div>
+            <span>@departmentName @departmentLocation</span>
             <br>
             <label for="lastModifyDate">Last modify date: </label>
             <input type="date" name="lastModifyDate" id="lastModifyDate">
@@ -96,6 +104,8 @@ else{
     private string? employeeName { get; set; }
     private int salary { get; set; }
     private int departmentNo { get; set; }
+    private string departmentName { get; set; }
+    private string departmentLocation { get; set; }
     private Boolean departmentExists { get; set; } = true;
     private Boolean departmentExistsUpdate { get; set; } = true;
 
@@ -117,6 +127,20 @@ else{
         catch (Exception e)
         {
             Console.WriteLine(e);
+        }
+    }
+
+
+    private void departmentNumberSave(int number)
+    {
+        departmentNo = number;
+        foreach(var dep in _departments)
+        {
+            if(dep.departmentNo == departmentNo)
+            {
+                departmentName = dep.departmentName;
+                departmentLocation = dep.departmentLocation;
+            }
         }
     }
 
@@ -240,5 +264,10 @@ else{
     public void Dispose()
     {
         employeeStateContainerService.OnStateChange -= StateHasChanged;
+    }
+
+    private async void dropdownClick()
+    {
+        await jsRunn.InvokeAsync<object>("employeeDropdown");
     }
 }

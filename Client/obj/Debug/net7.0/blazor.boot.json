@@ -204,14 +204,14 @@
       "netstandard.dll": "sha256-p32h5P3QmHJ\/FGoeE6m7f5g\/8ng2PSPGZktHyMadvIs=",
       "System.Private.CoreLib.dll": "sha256-6MwQcyKbqBsoZYOcD9fQJ4iKcn1qMmWRWVEkU2LLCb0=",
       "HammerProject.Shared.dll": "sha256-aIM6WLU55QhbJ\/IgWx93MGr2TnWU4oCdCLNt0AspYjI=",
-      "HammerProject.Client.dll": "sha256-TtxEooOBaghJ71RR5IM+Cbp7cC7Nmt1UPHNxSt0uv6U="
+      "HammerProject.Client.dll": "sha256-xw0OuzAZLqHvu6XKM5InaTXzCeKvgEWPtFKMbTN8jE8="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "HammerProject.Shared.pdb": "sha256-JJ+iM+HTb9NXRlDBglvHIYPbbpu2c2n0dZ4M8+7ucUc=",
-      "HammerProject.Client.pdb": "sha256-\/+1TlFKpZeGyktMCaMeFWompWIbB3w2yE8eMUcK5xto="
+      "HammerProject.Client.pdb": "sha256-G9DxWCDreI2SI061wO5EKkxyUzWjEe70UzKb2h1DJts="
     },
     "runtime": {
       "dotnet.7.0.2.8wsiz97xrn.js": "sha256-4mh03qTse0uNR+dQ6ydExm4jJXph0RE8zGNCtF0jiNA=",

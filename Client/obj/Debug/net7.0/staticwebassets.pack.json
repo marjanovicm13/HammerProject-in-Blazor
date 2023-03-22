@@ -69,6 +69,14 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\dropdownClick.js",
+      "PackagePath": "staticwebassets\\js\\dropdownClick.js"
+    },
+    {
+      "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\employeeDropdown.js",
+      "PackagePath": "staticwebassets\\js\\employeeDropdown.js"
+    },
+    {
       "Id": "D:\\Fakultet\\Fakultet\\Projekti\\Blazor\\Hammer\\HammerProjectV2\\HammerProject-in-Blazor\\Client\\wwwroot\\js\\fbInit.js",
       "PackagePath": "staticwebassets\\js\\fbInit.js"
     },

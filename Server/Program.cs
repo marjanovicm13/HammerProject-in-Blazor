@@ -16,7 +16,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
-    builder.WithOrigins("https://localhost:7253", "https://localhost:44391", "http://localhost:5197")
+    builder
+    .AllowAnyOrigin()
              .AllowAnyHeader()
             .AllowAnyMethod()
    );

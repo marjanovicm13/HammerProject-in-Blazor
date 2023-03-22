@@ -1,5 +1,5 @@
-﻿window.fbLogout = function () {
-    window.FB.logout(function (response) {
+﻿fbLogout = function () {
+    FB.logout(function (response) {
         console.log("in fb logout")
         console.log(response);
     });
