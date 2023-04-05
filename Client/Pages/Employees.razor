@@ -62,7 +62,12 @@ else{
                     {
                         <td>@employee.employeeName</td>
                         <td>@employee.salary</td>
-                        <td>@employee.departmentNo</td>
+                        @foreach (var dep in _departments)
+                        {
+                            @if(employee.departmentNo == dep.departmentNo){
+                                <td>@dep.departmentName @dep.departmentLocation</td>
+                            }
+                        }
                         <AuthorizeView>
                             <Authorized>
                                 <td><button class="btn btn-dark" @onclick="(() => employee.updateClicked = true)">Update</button></td>
